@@ -1,33 +1,33 @@
 boolv-ai-tools:
   env:
-  - name: ENV_NAME
-    value: main
-  - name: ENV_DOMAIN
-    value: boolv-ai-tools-z9df5p42s.forkmain.cloud
+    - name: ENV_NAME
+      value: main
+    - name: ENV_DOMAIN
+      value: boolv-ai-tools-z9df5p42s.forkmain.cloud
   fullnameOverride: boolv-ai-tools
   image:
     repository: ghcr.io/lxz0510/boolv-ai-tools
-    tag: latest
+    tag: d1caef1
   imagePullSecrets:
-  - name: boolv-ai-tools-docker
+    - name: boolv-ai-tools-docker
   ingress:
     className: nginx
     enabled: true
     hosts:
-    - host: boolv-ai-tools-z9df5p42s.forkmain.cloud
-      paths:
-      - path: /
-        pathType: ImplementationSpecific
+      - host: boolv-ai-tools-z9df5p42s.forkmain.cloud
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
   nocalhost:
     command:
       debug:
-      - ""
+        - ""
       run:
-      - yarn
-      - install
-      - '&&'
-      - yarn
-      - dev
+        - yarn
+        - install
+        - '&&'
+        - yarn
+        - dev
     configPath: conf/nocalhost.yaml
     env: null
     gitURL: https://github.com/lxz0510/boolv-ai-tools.git
@@ -36,8 +36,8 @@ boolv-ai-tools:
     language: javascript
     patches: null
     persistentVolumeDirs:
-    - capacity: 20Gi
-      path: /home/nocalhost-dev
+      - capacity: 20Gi
+        path: /home/nocalhost-dev
     remoteDebugPort: 9009
   service:
     port: 3000
